@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+{% include "header.html" %}
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h1 class="text-center">Courses</h1>
+        <table id="table" class="display table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses_list %}
+                    <tr>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.hours }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>

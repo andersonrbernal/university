@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+{% include "header.html" %}
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h1 class="text-center my-3">Students list</h1>
+        <p>{{ ola }}</p>
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="table" class="display table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Birth Date</th>
+                            <th>CPF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students_list %}
+                        <tr>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.surname }}</td>
+                            <td>{{ student.birth_date }}</td>
+                            <td>{{ student.cpf }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>
