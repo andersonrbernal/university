@@ -19,5 +19,8 @@ define("VAR_LIST", [
     "students" => HOME . "/students",
     "courses" => HOME . "/courses",
     "registration" => HOME . "/registration",
-    "lang" => LANG_PT_BR
+    "lang" => LANG_PT_BR,
+    "student_img" => "./img/student.jpg",
+    "course_img" => "./img/course.jpg",
+    "favicon" => "./img/school-favicon.ico"
 ]);

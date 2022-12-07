@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+{% include "header.html" %}
+<body>
+    {% include "navbar.html" %}
+    {% for course in course_data %}
+    <form method="post" class="form container my-2" id="form">
+        <input type="hidden" name="id" id="id" value="{{ course.id }}">
+        <h1 class="text-center">Register student</h1>
+        <div class="row my-3">
+            <div class="col text-center">
+                {# Warnings #}
+                <div class="alert alert-warning" role="alert">
+                    Please, fill up the form
+                    <br>
+                    All fields with <span class="text-danger">*</span> are required.
+                </div>
+                {# Form #}
+                <div class="form-floating mb-2">
+                    {# Name #}
+                    <input type="text" class="form-control" id="name" name="name"
+                        placeholder="Enter the name of the course" value="{{ course.name }}">
+                    <label for="name">Name<span class="text-danger">*</span></label>
+                </div>
+                <div class="form-floating mb-2">
+                    {# Hours #}
+                    <input type="number" class="form-control" id="hours" name="hours" placeholder="Course's hours"
+                        value="{{ course.hours }}">
+                    <label for="hours">
+                        Hours<span class="text-danger">*</span>
+                    </label>
+                </div>
+                <div class="input-group d-flex justify-content-center">
+                    <a type="button" class="btn btn-secondary" href="{{ courses }}">Go back</a>
+                    <button type="button" class="btn btn-primary" id="btn-save">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% endfor %}
+    {% include "footer.html" %}
+</body>
+</html>

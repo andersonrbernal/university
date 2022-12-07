@@ -5,6 +5,16 @@
     {% include "navbar.html" %}
     <div class="container">
         <h1 class="text-center">Registration</h1>
+        <div class="row text-center">
+            <a class="col-12 col-md-6" href="{{ student_registration }}">
+                <img class="img-fluid" src="{{ student_img }}" alt="student">
+                <button class="btn btn-primary">Register Student</button>
+            </a>
+            <a class="col-12 col-md-6" href="{{ course_registration }}">
+                <img class="img-fluid" src="{{ course_img }}" alt="course">
+                <button class="btn btn-primary">Register Course</button>
+            </a>
+        </div>
     </div>
     {% include "footer.html" %}
 </body>

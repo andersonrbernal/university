@@ -3,25 +3,34 @@
 {% include "header.html" %}
 <body>
     {% include "navbar.html" %}
-    <div class="container">
+    <form class="container" method="post" id="formID">
+        <input type="hidden" name="id" id="id">
         <h1 class="text-center">Courses</h1>
         <table id="table" class="display table">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>Hours</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 {% for course in courses_list %}
-                    <tr>
-                        <td>{{ course.name }}</td>
-                        <td>{{ course.hours }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.hours }}</td>
+                    <td>
+                        {# Edit #}
+                        <a class="btn btn-sm btn-warning" href="{{ course_id_for_editing ~ course.id }}">Edit</a>
+                        {# Delete #}
+                        <button type="button" class="btn btn-sm btn-danger" id="{{ course.id }}"
+                            onclick="remove(this.id, '{{ delete_course_url }}')">Delete</button>
+                    </td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </div>
+    </form>
     {% include "footer.html" %}
 </body>
 </html>

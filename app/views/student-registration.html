@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+{% include "header.html" %}
+<body>
+    {% include "navbar.html" %}
+    <form method="post" class="form container my-2" id="form">
+        <input type="hidden" name="id" id="id">
+        <h1 class="text-center">Register student</h1>
+        <div class="row my-3">
+            <div class="col text-center">
+                {# Warnings #}
+                <div class="alert alert-warning" role="alert">
+                    Please, fill up the form 
+                    <br>
+                    All fields with <span class="text-danger">*</span> are required.
+                </div>
+                {# Form #}
+                <div class="input-group mb-2">
+                    <div class="form-floating">
+                        {# Name #}
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
+                        <label for="name">
+                            Name<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="form-floating">
+                        {# Surname #}
+                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter your last name">
+                        <label for="surname">
+                            Last name<span class="text-danger">*</span></label>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="form-floating">
+                        {# Birth Date #}
+                        <input type="text" class="form-control" id="birth-date" name="birth_date" placeholder="Enter your birth date">
+                        <label for="birth-date">
+                            Birth Date
+                            <span class="text-danger">*</span>
+                        </label>
+                    </div>
+                    <div class="form-floating">
+                        {# Phone Number #}
+                        <input type="text" class="form-control" id="tel" name="phone" placeholder="Enter your telephone number">
+                        <label for="phone">
+                            Telephone
+                        </label>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Enter your CPF">
+                        <label for="cpf">
+                            CPF<span class="text-danger">*</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="input-group d-flex justify-content-center">
+                    <a type="button" class="btn btn-secondary" href="{{ registration }}">Go back</a>
+                    <button type="button" class="btn btn-primary" id="btn-save">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% include "footer.html" %}
+</body>
+</html>

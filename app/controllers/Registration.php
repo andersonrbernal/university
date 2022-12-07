@@ -15,7 +15,9 @@ class Registration extends Base
             $this->setView("registration"),
             array_merge(
                 [
-                    "title" => "Registration"
+                    "title" => "Registration",
+                    "student_registration" => HOME . "/registerstudent",
+                    "course_registration" => HOME . "/registercourse"
                 ], VAR_LIST
             )
         );
