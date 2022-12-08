@@ -4,37 +4,46 @@
 <body>
     {% include "navbar.html" %}
     <form method="post" class="form container my-2" id="form">
-        <input type="hidden" name="id" id="id">
         <h1 class="text-center">Register student</h1>
         <div class="row my-3">
             <div class="col text-center">
                 {# Warnings #}
-                <div class="alert alert-warning" role="alert">
-                    Please, fill up the form
-                    <br>
-                    All fields with <span class="text-danger">*</span> are required.
+                <div class="col-12">
+                    <div id="alert" class="alert alert-warning" role="alert">
+                        <h4 id="title" class="alert-heading">Warning!</h4>
+                        <div class="col-10 w-100">
+                            <span id="msg">
+                                All fields marked with <span class="text-danger">*</span> are required.
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 {# Form #}
                 <div class="form-floating mb-2">
                     {# Name #}
                     <input type="text" class="form-control" id="name" name="name"
-                        placeholder="Enter the name of the course">
+                        placeholder="Enter the name of the course" required>
                     <label for="name">Name<span class="text-danger">*</span></label>
                 </div>
                 <div class="form-floating mb-2">
                     {# Hours #}
-                    <input type="number" class="form-control" id="hours" name="hours" placeholder="Course's hours">
+                    <input type="number" class="form-control" id="hours" name="hours" placeholder="Course's hours"
+                        onchange="numberLimiter(this, 10, 999)" required>
+                    <small class="text-start">The course should have at least 10 hours and it can't surpass 999
+                        hours.</small>
                     <label for="hours">
                         Hours<span class="text-danger">*</span>
                     </label>
                 </div>
-                <div class="input-group d-flex justify-content-center">
+                <div class="input-group d-flex justify-content-center" id="buttons">
                     <a type="button" class="btn btn-secondary" href="{{ registration }}">Go back</a>
                     <button type="button" class="btn btn-primary" id="btn-save">Register</button>
                 </div>
             </div>
         </div>
     </form>
+    {# Courses.js #}
+    <script src="{{ courses_script }}"></script>
     {% include "footer.html" %}
 </body>
 </html>

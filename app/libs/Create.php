@@ -15,7 +15,7 @@ trait Create
             implode(",", array_keys($fieldsAndValues)),
             ":" . implode(",:", array_keys($fieldsAndValues))
         );
-
+        
         try {
             $query = $this->connection->prepare($placeholder);
             return $query->execute($fieldsAndValues); 

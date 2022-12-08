@@ -59,7 +59,8 @@ class ControllerCourses extends Base
             $this->setView("course-registration"),
             array_merge_recursive(
                 [
-                    "title" => "Register course"
+                    "title" => "Register course",
+                    "courses_script" => "./js/courses.js"
                 ],
                 VAR_LIST
             )
@@ -68,20 +69,39 @@ class ControllerCourses extends Base
 
     public function create(Request $request, Response $response, array $args)
     {
-        $id = filter_input(INPUT_POST, "id", FILTER_UNSAFE_RAW);
-        $name = filter_input(INPUT_POST, "name", FILTER_UNSAFE_RAW);
-        $hours = filter_input(INPUT_POST, "hours", FILTER_UNSAFE_RAW);
-        $sign_up_date = date("Y-m-d h:m:s", time());
-
-
-        $createFieldAndValues = [
-            "id" => $id,
-            "name" => strtoupper($name),
-            "hours" => number_format($hours),
+        $args = [
+            "name" => filter_input(INPUT_POST, "name", FILTER_UNSAFE_RAW),
+            "hours" => filter_input(INPUT_POST, "hours", FILTER_UNSAFE_RAW),
             "sign_up_date" => date("Y-m-d h:m:s", time())
         ];
 
-        return $this->students->create($createFieldAndValues);
+        $createFieldAndValues = [
+            "name" => strtoupper($args['name']),
+            "hours" => number_format($args['hours']),
+            "sign_up_date" => $args['sign_up_date']
+        ];
+
+        $creatingCourse = $this->courses->create($createFieldAndValues);
+
+        if ($creatingCourse) {
+            $arr = [
+                "status" => true,
+                "msg" => "Record sucessfully created."
+            ];
+            $json = json_encode($arr);
+            $response->getBody()->write($json);
+            return $response->withStatus(200)->withHeader('Content-type', 'application/json');
+            die();
+        } else {
+            $arr = [
+                "status" => false,
+                "msg" => "Failed to create record."
+            ];
+            $json = json_encode($arr);
+            $response->getBody()->write($json);
+            return $response->withStatus(500)->withHeader('Content-type', 'application/json');
+            die();
+        }
     }
 
     public function update()
