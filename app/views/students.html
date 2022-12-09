@@ -5,15 +5,15 @@
     {% include "navbar.html" %}
     <form class="container" method="post" id="formID">
         <input type="hidden" name="id" id="id">
-        <h1 class="text-center my-3">Students list</h1>
+        <h1 class="text-center my-3">Lista de Estudantes</h1>
         <table id="table" class="display table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Last Name</th>
-                    <th>Birth Date</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Data de Nascimento</th>
                     <th>CPF</th>
-                    <th>Action</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,10 +25,10 @@
                     <td>{{ student.cpf }}</td>
                     <td>
                         {# Edit #}
-                        <a class="btn btn-sm btn-warning" href="{{ student_id_for_editing ~ student.id }}">Edit</a>
+                        <a class="btn btn-sm btn-warning" href="{{ student_id_for_editing ~ student.id }}">Editar</a>
                         {# Delete #}
                         <button type="button" class="btn btn-sm btn-danger" id="{{ student.id }}"
-                            onclick="remove(this.id, '{{ delete_student_url }}')">Delete</button>
+                            onclick="remove(this.id, '{{ delete_student_url }}')">Deletar</button>
                     </td>
                 </tr>
                 {% endfor %}

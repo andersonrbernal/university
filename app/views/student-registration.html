@@ -4,7 +4,7 @@
 <body>
     {% include "navbar.html" %}
     <form method="post" class="form container my-2" id="form">
-        <h1 class="text-center">Register student</h1>
+        <h1 class="text-center">Cadastrar Estudante</h1>
         <div class="row my-3">
             <div class="col text-center">
                 {# Warnings #}
@@ -13,7 +13,7 @@
                         <h4 id="title" class="alert-heading">Warning!</h4>
                         <div class="col-10 w-100">
                             <span id="msg">
-                                All fields marked with <span class="text-danger">*</span> are required.
+                                Todos os campos com <span class="text-danger">*</span> são obrigatórios para o cadastro.
                             </span>
                         </div>
                     </div>
@@ -25,23 +25,23 @@
                     {# Name #}
                     <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name" required>
                     <label for="name">
-                        Name<span class="text-danger">*</span></label>
+                        Nome<span class="text-danger">*</span></label>
                 </div>
                 <div class="form-floating">
                     {# Surname #}
                     <input type="text" class="form-control" name="last_name" id="last_name"
                         placeholder="Enter your last name" required>
                     <label for="surname">
-                        Last name<span class="text-danger">*</span></label>
+                        Sobrenome<span class="text-danger">*</span></label>
                 </div>
             </div>
             <div class="input-group mb-2">
                 <div class="form-floating">
                     {# Birth Date #}
-                    <input type="text" class="form-control" id="birth-date" name="birth_date"
+                    <input type="date" class="form-control" id="birth-date" name="birth_date"
                         placeholder="Enter your birth date" required>
                     <label for="birth-date">
-                        Birth Date
+                        Data de Nascimento
                         <span class="text-danger">*</span>
                     </label>
                 </div>
@@ -50,7 +50,7 @@
                     <input type="text" class="form-control" id="tel" name="phone"
                         placeholder="Enter your telephone number">
                     <label for="phone">
-                        Telephone
+                        Telefone
                     </label>
                 </div>
             </div>
@@ -63,8 +63,8 @@
                 </div>
             </div>
             <div class="input-group d-flex justify-content-center" id="buttons">
-                <a type="button" class="btn btn-secondary" href="{{ registration }}">Go back</a>
-                <button type="button" class="btn btn-primary" id="btn-save">Register</button>
+                <a type="button" class="btn btn-secondary" href="{{ registration }}">Voltar</a>
+                <button type="button" class="btn btn-primary" id="btn-save">Cadastrar</button>
             </div>
         </div>
         </div>

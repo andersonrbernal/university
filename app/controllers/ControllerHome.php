@@ -18,7 +18,7 @@ class ControllerHome extends Base
             $this->setView("home"),
             array_merge(
                 [
-                    "title" => "Homepage"
+                    "title" => "Página Inicial"
                 ], VAR_LIST
             )
         );

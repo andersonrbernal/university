@@ -69,7 +69,7 @@ function alert(status, message, title, link, pattern = true) {
     if (pattern === true) {
         setTimeout(() => {
             document.getElementById("alert").className = 'alert alert-warning';
-            document.getElementById("title").innerHTML = 'Warning!';
+            document.getElementById("title").innerHTML = 'Atenção!';
             document.getElementById("msg").innerHTML = msg;
             // document.getElementById("loading").className = 'col-2 d-none';
         }, 980);

@@ -6,14 +6,19 @@
     {% for course in course_data %}
     <form method="post" class="form container my-2" id="form">
         <input type="hidden" name="id" id="id" value="{{ course.id }}">
-        <h1 class="text-center">Register student</h1>
+        <h1 class="text-center">Editar Curso</h1>
         <div class="row my-3">
             <div class="col text-center">
                 {# Warnings #}
-                <div class="alert alert-warning" role="alert">
-                    Please, fill up the form
-                    <br>
-                    All fields with <span class="text-danger">*</span> are required.
+                <div class="col-12">
+                    <div id="alert" class="alert alert-warning" role="alert">
+                        <h4 id="title" class="alert-heading">Atenção!</h4>
+                        <div class="col-10 w-100">
+                            <span id="msg">
+                                Todos os campos com <span class="text-danger">*</span> são obrigatórios para o cadastro.
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 {# Form #}
                 <div class="form-floating mb-2">
@@ -25,19 +30,21 @@
                 <div class="form-floating mb-2">
                     {# Hours #}
                     <input type="number" class="form-control" id="hours" name="hours" placeholder="Course's hours"
-                        value="{{ course.hours }}">
+                        value="{{ course.hours }}" onchange="numberLimiter(this, 10, 999)">
                     <label for="hours">
-                        Hours<span class="text-danger">*</span>
+                        Horas<span class="text-danger">*</span>
                     </label>
+                    <small>O curso deverá ter ao mínimo 10 horas.</small>
                 </div>
                 <div class="input-group d-flex justify-content-center">
-                    <a type="button" class="btn btn-secondary" href="{{ courses }}">Go back</a>
-                    <button type="button" class="btn btn-primary" id="btn-save">Register</button>
+                    <a type="button" class="btn btn-secondary" href="{{ courses }}">Voltar</a>
+                    <button type="button" class="btn btn-primary" id="btn-update">Salvar</button>
                 </div>
             </div>
         </div>
     </form>
     {% endfor %}
     {% include "footer.html" %}
+    <script src="{{ course_script }}"></script>
 </body>
 </html>

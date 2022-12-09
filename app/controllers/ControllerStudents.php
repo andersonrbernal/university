@@ -25,7 +25,7 @@ class ControllerStudents extends Base
             $this->setView("students"),
             array_merge_recursive(
                 [
-                    "title" => "Students",
+                    "title" => "Estudantes",
                     "students_list" => $students_list,
                     "edit_student" => HOME . "/editstudent",
                     "student_id_for_editing" => HOME . "/editstudent?id=",
@@ -43,8 +43,8 @@ class ControllerStudents extends Base
             $this->setView("student-registration"),
             array_merge_recursive(
                 [
-                    "title" => "Register course",
-                    "students_script" => "./js/students.js"
+                    "title" => "Cadastrar estudante",
+                    "students_script" => "./js/createStudent.js"
                 ],
                 VAR_LIST
             )
@@ -60,8 +60,9 @@ class ControllerStudents extends Base
             $this->setView("edit-student"),
             array_merge(
                 [
-                    "title" => "Edit Student",
-                    "student_data" => $this->students->findBy("id", $id)
+                    "title" => "Editar estudante",
+                    "student_data" => $this->students->findBy("id", $id),
+                    "students_script" => "./js/updateStudent.js"
                 ],
                 VAR_LIST
             )
@@ -80,12 +81,8 @@ class ControllerStudents extends Base
             "sign_up_date" => date("Y-m-d h:m:s", time())
         ];
 
-        $date = DateTime::createFromFormat('d/m/Y', $args['birth_date']);
-        $args['birth_date'] = $date->format('Y-m-d');
-
         $args['name'] = strtoupper($args['name']);
         $args['last_name'] = strtoupper($args['last_name']);
-        $args['birth_date'] = $args['birth_date'];
 
         $FieldAndValues = [
             "id" => $args['id'],
@@ -134,7 +131,6 @@ class ControllerStudents extends Base
 
         $args['name'] = strtoupper($args['name']);
         $args['last_name'] = strtoupper($args['last_name']);
-        $args['birth_date'] = date('Y-m-d', $args['birth_date']);
 
         $fieldsAndValues = [
             "fields" => [

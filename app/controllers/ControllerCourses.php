@@ -25,7 +25,7 @@ class ControllerCourses extends Base
             $this->setView("courses"),
             array_merge_recursive(
                 [
-                    "title" => "Courses",
+                    "title" => "Cursos",
                     "courses_list" => $courses_list,
                     "course_id_for_editing" => HOME . "/editcourse?id=",
                     "delete_course_url" => "/deletecourse"
@@ -44,8 +44,9 @@ class ControllerCourses extends Base
             $this->setView("edit-course"),
             array_merge_recursive(
                 [
-                    "title" => "Edit Course",
+                    "title" => "Editar curso",
                     "course_data" => $this->courses->findBy("id", $id),
+                    "course_script" => "./js/updateCourse.js"
                 ],
                 VAR_LIST
             )
@@ -59,8 +60,8 @@ class ControllerCourses extends Base
             $this->setView("course-registration"),
             array_merge_recursive(
                 [
-                    "title" => "Register course",
-                    "courses_script" => "./js/courses.js"
+                    "title" => "Cadastrar curso",
+                    "courses_script" => "./js/createCourse.js"
                 ],
                 VAR_LIST
             )
@@ -104,25 +105,50 @@ class ControllerCourses extends Base
         }
     }
 
-    public function update()
+    public function update(Request $request, Response $response, array $args)
     {
-        $id = filter_input(INPUT_POST, "id", FILTER_UNSAFE_RAW);
-        $name = filter_input(INPUT_POST, "name", FILTER_UNSAFE_RAW);
-        $hours = filter_input(INPUT_POST, "hours", FILTER_UNSAFE_RAW);
-        $update_date = date("Y-m-d h:m:s", time());
+        $args = [
+            "id" => filter_input(INPUT_POST, "id", FILTER_UNSAFE_RAW),
+            "name" => filter_input(INPUT_POST, "name", FILTER_UNSAFE_RAW),
+            "hours" => filter_input(INPUT_POST, "hours", FILTER_UNSAFE_RAW),
+            "update_date" => date("Y-m-d h:m:s", time())
+        ];
+
+        $name = strtoupper($args['name']);
+        $hours = number_format($args['hours']);
 
         $updateFieldAndValues = [
             "fields" => [
-                "name" => strtoupper($name),
-                "hours" => number_format($hours),
-                "update_date" => $update_date
+                "name" => $name,
+                "hours" => $hours,
+                "update_date" => $args['update_date']
             ],
             "where" => [
-                "id" => $id
+                "id" => $args['id']
             ]
         ];
 
-        return $this->courses->update($updateFieldAndValues);
+        $updating = $this->courses->update($updateFieldAndValues);
+
+        if ($updating) {
+            $arr = [
+                "status" => true,
+                "msg" => "Course saved successfully."
+            ];
+            $json = json_encode($arr);
+            $response->getBody()->write($json);
+            return $response->withStatus(200)->withHeader('Content-type', 'application/json');
+            die();
+        }
+
+        $arr = [
+            "status" => false,
+            "msg" => "Failed to save course."
+        ];
+        $json = json_encode($arr);
+        $response->getBody()->write($json);
+        return $response->withStatus(500)->withHeader('Content-type', 'application/json');
+        die();
     }
 
     public function delete(Request $request, Response $response)
