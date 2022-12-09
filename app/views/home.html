@@ -3,8 +3,60 @@
 {% include "header.html" %}
 <body>
     {% include "navbar.html" %}
-    <div class="container">
-        <h1>Página Inicial</h1>
+    <div class="container text-center">
+        <h3 class="title mt-3">O que você quer aprender hoje?</h3>
+        <p class="lead">Venha aprender novos aqui na Cursonomia.</p>
+        <div class="row d-flex align-items-center">
+            <div class="col-12 col-lg-6">
+                <img class="img-fluid" src="./img/career-test.png" alt="career teste illustration">
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Teste Vocacional
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem voluptatem placeat esse, doloremque eligendi deserunt, neque corrupti quo, doloribus saepe nulla dolor non vero! Quas odit fugit voluptates molestias? Culpa debitis dolor cumque incidunt optio, veniam, eligendi possimus, maxime nam quae unde consequuntur atque error.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Mas o teste funciona mesmo?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat reprehenderit at assumenda, officiis non nesciunt neque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi delectus error debitis cum aliquid, sunt reiciendis animi veritatis distinctio ullam eum ratione itaque, inventore aperiam explicabo. Eligendi distinctio voluptates recusandae.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Carreiras
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloremque veritatis sint odio tempore? Asperiores facere iusto adipisci, magni eaque repellendus reprehenderit, eos dolores exercitationem placeat, laborum sapiente aliquam commodi?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     {% include "footer.html" %}
 </body>
